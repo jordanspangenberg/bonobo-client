@@ -14,7 +14,6 @@ export class home extends Component {
       .get('/screams')
       .then(res => {
         // FIXME
-        console.log(res.data)
         this.setState({
           screams: res.data
         });
@@ -23,7 +22,7 @@ export class home extends Component {
   }
   render() {
     let recentScreamsMarkup = this.state.screams ? (
-      this.state.screams.map(scream => <Scream scream={scream}/>)
+      this.state.screams.map(scream => <Scream key={scream.screamId} scream={scream}/>)
     ) : <p>Loading . . .</p>
     return (
       <Grid container spacing={3}>
