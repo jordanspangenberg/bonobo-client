@@ -5,39 +5,18 @@ import { Link } from 'react-router-dom';
 import AppIcon from '../images/monkey.svg';
 
 // MUI Stuff
-import { Grid, Typography, TextField, Button, CircularProgress } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress
+} from '@material-ui/core';
 import axios from 'axios';
 
-const styles = {
-  form: {
-    textAlign: 'center'
-  },
-  image: {
-    margin: '0px auto 0px auto',
-    height: '120px'
-  },
-  pageTitle: {
-    margin: '0px auto 0px auto'
-  },
-  textField: {
-    margin: '0px auto 0px auto'
-  },
-  button: {
-    marginTop: 20,
-    marginBottom: 5,
-    position: 'relative'
-
-  },
-  customError: {
-    color: 'red',
-    fontSize: '0.8rem',
-    marginTop: 10
-  },
-  progress: {
-    position: 'absolute'
-  }
-};
-
+const styles = theme => ({
+  ...theme.styles
+});
 export class login extends Component {
   constructor() {
     super();
@@ -60,6 +39,7 @@ export class login extends Component {
     axios
       .post('/login', userData)
       .then(res => {
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
         this.setState({
           loading: false
         });
