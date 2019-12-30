@@ -66,3 +66,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Notes:
+
+`Objects are not valid as a React child`
+In my database I still had a regular datetime object and was trying to render it on the page without destructuring it. Deleted the non-ISO formatted dates and it worked.
