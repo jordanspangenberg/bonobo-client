@@ -64,7 +64,7 @@ export const getUserData = () => dispatch => {
  * Logout user by removing user authentication token
  * @param {Function} dispatch Our redux action payload
  */
-export const logoutUser = dispatch => {
+export const logoutUser = () => dispatch => {
   localStorage.removeItem('FBIdToken');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({ type: SET_UNAUTHENTICATED });
