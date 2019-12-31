@@ -13,8 +13,11 @@ body {
 }
 
 .nav-container {
-/*   margin: auto; */
   justify-content: flex-end;
+}
+
+.nav-container svg {
+  color: #fff
 }
 
 a {

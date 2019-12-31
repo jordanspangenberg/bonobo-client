@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import MyButton from '../util/MyButton';
 
 // MaterialUI
 import { withStyles } from '@material-ui/core/styles';
@@ -69,11 +70,9 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title='Edit details' placement='top'>
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <EditIcon color='primary' />
-          </IconButton>
-        </Tooltip>
+        <MyButton tip="Edit details" onClick={this.handleOpen} btnClassName={classes.button}>
+          <EditIcon color='primary' />
+        </MyButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
