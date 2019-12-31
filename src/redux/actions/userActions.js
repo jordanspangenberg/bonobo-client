@@ -3,7 +3,8 @@ import {
   SET_ERRORS,
   CLEAR_ERRORS,
   LOADING_UI,
-  SET_UNAUTHENTICATED
+  SET_UNAUTHENTICATED,
+  LOADING_USER
 } from '../types';
 import axios from 'axios';
 
@@ -44,6 +45,7 @@ export const signupUser = (newUserData, history) => dispatch => {
 };
 
 export const getUserData = () => dispatch => {
+  dispatch({ type: LOADING_USER });
   axios
     .get('/user')
     .then(res => {
@@ -57,7 +59,7 @@ export const getUserData = () => dispatch => {
     });
 };
 
- // TODO: Redux documentation
+// TODO: Redux documentation
 /**
  * Logout user by removing user authentication token
  * @param {Function} dispatch Our redux action payload
