@@ -25,7 +25,7 @@ import { deleteScream } from '../redux/actions/dataActions';
 
 const styles = {
   deleteButton: {
-    left: '90%',
+    left: '92%',
     top: '8%',
     position: 'absolute'
   }

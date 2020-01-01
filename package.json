@@ -26,7 +26,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["react-app", "plugin:prettier/recommended"]
   },
   "browserslist": {
     "production": [
@@ -44,5 +44,13 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.17.0"
   },
-  "proxy": "https://us-central1-bonobo-f3a21.cloudfunctions.net/api"
+  "proxy": "https://us-central1-bonobo-f3a21.cloudfunctions.net/api",
+  "prettier": {
+    "printWidth": 90,
+    "bracketSpacing": true,
+    "trailingComma": "es5",
+    "jsxSingleQuote": false,
+    "tabWidth": 2,
+    "arrowParens": "avoid"
+  }
 }
