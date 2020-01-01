@@ -23,13 +23,13 @@ import { DeleteOutline, Delete } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { deleteScream } from '../redux/actions/dataActions';
 
-const styles =  {
+const styles = {
   deleteButton: {
-    left: "90%",
-    top: "8%",
-    position: "absolute"
+    left: '90%',
+    top: '8%',
+    position: 'absolute'
   }
-}
+};
 
 class DeleteScream extends Component {
   static propTypes = {
@@ -39,17 +39,17 @@ class DeleteScream extends Component {
   };
   state = {
     open: false
-  }
+  };
   handleOpen = () => {
-    this.setState({open: true})
-  }
+    this.setState({ open: true });
+  };
   handleClose = () => {
-    this.setState({open: false})
-  }
+    this.setState({ open: false });
+  };
   deleteScream = () => {
-    this.props.deleteSCream(this.props.screamId)
-    this.setState({open: false})
-  }
+    this.props.deleteScream(this.props.screamId);
+    this.setState({ open: false });
+  };
 
   render() {
     const { classes } = this.props;
@@ -60,15 +60,22 @@ class DeleteScream extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
-          <DeleteOutline color="secondary" />
+          <DeleteOutline color='secondary' />
         </MyButton>
-        <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
-          <DialogTitle>
-            Are you sure you want to delete this scream?
-          </DialogTitle>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth='sm'
+        >
+          <DialogTitle>Are you sure you want to delete this scream?</DialogTitle>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary" >Cancel</Button>
-            <Button onClick={this.deleteScream} color="secondary" >Delete</Button>
+            <Button onClick={this.handleClose} color='primary'>
+              Cancel
+            </Button>
+            <Button onClick={this.deleteScream} color='secondary'>
+              Delete
+            </Button>
           </DialogActions>
         </Dialog>
       </Fragment>

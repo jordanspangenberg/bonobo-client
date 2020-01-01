@@ -4,13 +4,18 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppIcon from '../images/monkey.svg';
 import MyButton from '../util/MyButton';
+import PostScream from '../components/PostScream';
 
 // MaterialUI Imports
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { Tooltip } from '@material-ui/core';
-import {Add as AddIcon, Home as HomeIcon, Notifications} from '@material-ui/icons'
+import {
+  Add as AddIcon,
+  Home as HomeIcon,
+  Notifications
+} from '@material-ui/icons';
 
 // Redux
 import { connect } from 'react-redux';
@@ -28,15 +33,13 @@ export class Navbar extends Component {
         <Toolbar className='nav-container'>
           {authenticated ? (
             <Fragment>
-              <MyButton tip="Post a Scream">
-                <AddIcon />
-              </MyButton>
-              <Link to="/">
-                <MyButton tip="Home">
+              <PostScream />
+              <Link to='/'>
+                <MyButton tip='Home'>
                   <HomeIcon />
                 </MyButton>
               </Link>
-              <MyButton tip="Notifications">
+              <MyButton tip='Notifications'>
                 <Notifications />
               </MyButton>
             </Fragment>
