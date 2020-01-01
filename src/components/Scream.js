@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
 import  MyButton  from '../util/MyButton'
+import DeleteScream from '../components/DeleteScream'
 
 // MUI imports
 import Card from '@material-ui/core/Card';
@@ -20,6 +21,7 @@ import { Chat, Favorite, FavoriteBorder } from '@material-ui/icons';
 
 const styles = {
   card: {
+    position: 'relative',
     display: 'flex',
     marginBottom: 20
   },
@@ -65,7 +67,8 @@ export class Scream extends Component {
         commentCount
       },
       user: {
-        authenticated
+        authenticated,
+        credentials: {handle}
       }
     } = this.props;
     const likeButton = !authenticated ? (
@@ -85,6 +88,9 @@ export class Scream extends Component {
         </MyButton>
       )
     )
+    const deleteButton = authenticated && userHandle === handle ? (
+      <DeleteScream screamId={screamId} />
+    ) : null
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -101,6 +107,7 @@ export class Scream extends Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           {/* TODO Add hover tooltip for verbose datetime*/}
           <Typography variant='body2' color='textSecondary'>
             {dayjs(createdAt).fromNow()}
