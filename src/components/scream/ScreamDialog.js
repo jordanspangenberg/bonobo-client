@@ -19,7 +19,12 @@ import { Close, UnfoldMore, Favorite, FavoriteBorder, Chat } from "@material-ui/
 
 // Redux
 import { connect } from "react-redux";
-import { getScream, likeScream, unlikeScream } from "../../redux/actions/dataActions";
+import {
+  getScream,
+  likeScream,
+  unlikeScream,
+  clearErrors,
+} from "../../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme.styles,
@@ -79,6 +84,7 @@ class ScreamDialog extends Component {
     this.setState({
       open: false,
     });
+    this.props.clearErrors();
   };
 
   render() {
@@ -177,6 +183,7 @@ ScreamDialog.propTypes = {
   userHandle: PropTypes.string.isRequired,
   scream: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -189,6 +196,7 @@ const mapActionsToProps = {
   getScream,
   likeScream,
   unlikeScream,
+  clearErrors,
 };
 
 export default connect(
