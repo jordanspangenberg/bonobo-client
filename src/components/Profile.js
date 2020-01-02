@@ -198,7 +198,9 @@ class Profile extends Component {
 
   static propTypes = {
     user: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    uploadImage: PropTypes.func.isRequired
   };
 }
 
@@ -209,9 +211,6 @@ const mapActionsToProps = {
 
 const mapStateToProps = state => ({
   user: state.user,
-  classes: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  uploadImage: PropTypes.func.isRequired
 });
 
 export default connect(
