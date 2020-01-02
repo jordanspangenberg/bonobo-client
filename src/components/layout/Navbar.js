@@ -24,7 +24,7 @@ const styles = {
 };
 export class Navbar extends Component {
   render() {
-    const { classes, authenticated } = this.props;
+    const { authenticated } = this.props;
     return (
       <AppBar>
         <Toolbar className='nav-container'>

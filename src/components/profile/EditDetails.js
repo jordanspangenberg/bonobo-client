@@ -4,7 +4,7 @@ import MyButton from '../../util/MyButton';
 
 // MaterialUI
 import { withStyles } from '@material-ui/core/styles';
-import { Tooltip, IconButton, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';

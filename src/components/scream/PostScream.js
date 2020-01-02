@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
-import DeleteScream from "./DeleteScream";
 
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";

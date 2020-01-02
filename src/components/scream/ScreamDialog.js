@@ -3,17 +3,15 @@ import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
-import Comments from './Comments'
+import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 
 // MaterialUi
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
   CircularProgress,
   Dialog,
-  DialogTitle,
   DialogContent,
-  TextField,
-  Button,
   Grid,
   Typography,
 } from "@material-ui/core";
@@ -29,36 +27,33 @@ const styles = theme => ({
     maxWidth: 200,
     width: 200,
     height: 200,
-    borderRadius: '50%',
-    objectFit: 'cover'
+    borderRadius: "50%",
+    objectFit: "cover",
   },
   dialogContent: {
-    padding: 20
+    padding: 20,
   },
   closeButton: {
-    position: 'absolute',
-    left: '90%',
-    top: '5%'
+    position: "absolute",
+    left: "90%",
+    top: "5%",
   },
   expandButton: {
-    position: 'absolute',
-    left: '92%'
+    position: "absolute",
+    left: "92%",
   },
   spinnerDiv: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 50,
-    marginBottom: 50
-  }
-
+    marginBottom: 50,
+  },
 });
 
 class ScreamDialog extends Component {
   likedScream = () => {
     if (
       this.props.user.likes &&
-      this.props.user.likes.find(
-        like => like.screamId === this.props.scream.screamId
-      )
+      this.props.user.likes.find(like => like.screamId === this.props.scream.screamId)
     ) {
       return true;
     } else {
@@ -66,11 +61,11 @@ class ScreamDialog extends Component {
     }
   };
   likeScream = () => {
-    this.props.likeScream(this.props.scream.screamId)
-  }
+    this.props.likeScream(this.props.scream.screamId);
+  };
   unlikeScream = () => {
-    this.props.unlikeScream(this.props.scream.screamId)
-  }
+    this.props.unlikeScream(this.props.scream.screamId);
+  };
   state = {
     open: false,
   };
@@ -97,34 +92,29 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
-        comments
+        comments,
       },
       UI: { loading },
-      user: {
-        authenticated,
-        credentials: {handle}
-      }
+      user: { authenticated },
     } = this.props;
     const likeButton = !authenticated ? (
       <MyButton tip="Like">
         <Link to="/login">
-          <FavoriteBorder color='primary' />
+          <FavoriteBorder color="primary" />
         </Link>
       </MyButton>
+    ) : this.likedScream() ? (
+      <MyButton tip="Remove like" onClick={this.unlikeScream}>
+        <Favorite color="primary" />
+      </MyButton>
     ) : (
-      this.likedScream() ? (
-        <MyButton tip="Remove like" onClick={this.unlikeScream}>
-          <Favorite color="primary" />
-        </MyButton>
-      ) : (
-        <MyButton tip="Like" onClick={this.likeScream}>
-          <FavoriteBorder color="primary" />
-        </MyButton>
-      )
-    )
+      <MyButton tip="Like" onClick={this.likeScream}>
+        <FavoriteBorder color="primary" />
+      </MyButton>
+    );
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
-      <CircularProgress size={200} thickness={2}/>
+        <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
       <Grid container spacing={4}>
@@ -147,12 +137,13 @@ class ScreamDialog extends Component {
           <hr className={classes.invisibleBreak} />
           <Typography variant="body1">{body}</Typography>
           {likeButton} <span>{likeCount}</span>
-          <MyButton tip='comments'>
-            <Chat color='primary' />
+          <MyButton tip="comments">
+            <Chat color="primary" />
           </MyButton>
           <span>{commentCount}</span>
         </Grid>
-          <hr className={classes.visibleBreak} />
+        <hr className={classes.visibleBreak} />
+        <CommentForm screamId={screamId} />
         <Comments comments={comments} />
       </Grid>
     );
@@ -191,13 +182,13 @@ ScreamDialog.propTypes = {
 const mapStateToProps = state => ({
   scream: state.data.scream,
   UI: state.UI,
-  user: state.user
+  user: state.user,
 });
 
 const mapActionsToProps = {
   getScream,
   likeScream,
-  unlikeScream
+  unlikeScream,
 };
 
 export default connect(
