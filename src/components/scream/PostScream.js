@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
-import DeleteScream from "../components/DeleteScream";
+import MyButton from "../../util/MyButton";
+import DeleteScream from "./DeleteScream";
 
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -20,7 +20,7 @@ import { Add, Close } from "@material-ui/icons";
 
 // Redux
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme.styles,

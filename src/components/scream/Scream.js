@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
-import  MyButton  from '../util/MyButton'
-import DeleteScream from '../components/DeleteScream'
-import ScreamDialog from '../components/ScreamDialog'
+import  MyButton  from '../../util/MyButton'
+import DeleteScream from './DeleteScream'
+import ScreamDialog from './ScreamDialog'
 
 // MUI imports
 import Card from '@material-ui/core/Card';
@@ -17,7 +17,7 @@ import { Typography } from '@material-ui/core';
 
 // Redux
 import { connect } from 'react-redux';
-import { likeScream, unlikeScream } from '../redux/actions/dataActions';
+import { likeScream, unlikeScream } from '../../redux/actions/dataActions';
 import { Chat, Favorite, FavoriteBorder } from '@material-ui/icons';
 
 const styles = {

@@ -2,17 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import AppIcon from '../images/monkey.svg';
-import MyButton from '../util/MyButton';
-import PostScream from '../components/PostScream';
+import MyButton from '../../util/MyButton';
+import PostScream from '../scream/PostScream';
 
 // MaterialUI Imports
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import { Tooltip } from '@material-ui/core';
 import {
-  Add as AddIcon,
   Home as HomeIcon,
   Notifications
 } from '@material-ui/icons';
