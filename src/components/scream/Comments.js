@@ -27,13 +27,13 @@ class Comments extends Component {
     return (
       <Grid container>
         {comments.map((comment, index) => {
-          const { body, createdAt, userImage, userHandle } = comment;
+          const { body, createdAt, imageUrl, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
               <Grid item sm={12}>
                 <Grid container>
-                  <Grid item sm={2}>
-                    <img src={userImage} alt="comment" className={classes.commentImage} />
+                  <Grid item sm={3}>
+                    <img src={imageUrl} alt="comment" className={classes.commentImage} />
                   </Grid>
                   <Grid item sm={9}>
                     <div className={classes.commentData}>

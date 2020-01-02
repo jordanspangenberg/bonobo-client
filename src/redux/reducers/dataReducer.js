@@ -1,9 +1,18 @@
-import { SET_SCREAMS, SET_SCREAM,  LIKE_SCREAM, UNLIKE_SCREAM, LOADING_DATA, DELETE_SCREAM, POST_SCREAM } from '../types';
+import {
+  SET_SCREAMS,
+  SET_SCREAM,
+  LIKE_SCREAM,
+  UNLIKE_SCREAM,
+  LOADING_DATA,
+  DELETE_SCREAM,
+  POST_SCREAM,
+  SUBMIT_COMMENT,
+} from "../types";
 
 const initialState = {
   screams: [],
   scream: {},
-  loading: false
+  loading: false,
 };
 
 let index;
@@ -12,13 +21,13 @@ export default function(state = initialState, action) {
     case LOADING_DATA:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case SET_SCREAMS:
       return {
         ...state,
         screams: action.payload,
-        loading: false
+        loading: false,
       };
     case SET_SCREAM:
       return {
@@ -31,28 +40,34 @@ export default function(state = initialState, action) {
         scream => scream.screamId === action.payload.screamId
       );
       state.screams[index] = action.payload;
+      /*       if (state.scream.screamId === action.payload.screamId) {
+  state.scream = { ...state.scream, ...action.payload };
+} */
       if (state.scream.screamId === action.payload.screamId) {
         state.scream = action.payload;
       }
       return {
-        ...state
+        ...state,
       };
     case DELETE_SCREAM:
-      index = state.screams.findIndex(
-        scream => scream.screamId === action.payload
-      );
+      index = state.screams.findIndex(scream => scream.screamId === action.payload);
       state.screams.splice(index, 1);
       return {
-        ...state
+        ...state,
       };
     case POST_SCREAM:
       return {
         ...state,
-        screams: [
-          action.payload,
-          ...state.screams
-        ]
-      }
+        screams: [action.payload, ...state.screams],
+      };
+    case SUBMIT_COMMENT:
+      return {
+        ...state,
+        scream: {
+          ...state.scream,
+          comments: [action.payload, ...state.scream.comments],
+        },
+      };
     default:
       return state;
   }
