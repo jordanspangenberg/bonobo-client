@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MyButton from '../../util/MyButton';
 import PostScream from '../scream/PostScream';
+import Notifications from './Notifications'
 
 // MaterialUI Imports
 import AppBar from '@material-ui/core/AppBar';
@@ -11,7 +12,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import {
   Home as HomeIcon,
-  Notifications
 } from '@material-ui/icons';
 
 // Redux
@@ -36,9 +36,7 @@ export class Navbar extends Component {
                   <HomeIcon />
                 </MyButton>
               </Link>
-              <MyButton tip='Notifications'>
                 <Notifications />
-              </MyButton>
             </Fragment>
           ) : (
             <Fragment>
