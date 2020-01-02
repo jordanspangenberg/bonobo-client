@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import Comments from './Comments'
 
 // MaterialUi
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -24,10 +25,6 @@ import { getScream, likeScream, unlikeScream } from "../../redux/actions/dataAct
 
 const styles = theme => ({
   ...theme.styles,
-  invisibleBreak: {
-    border: "none",
-    margin: 4,
-  },
   profileImage: {
     maxWidth: 200,
     width: 200,
@@ -100,6 +97,7 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
+        comments
       },
       UI: { loading },
       user: {
@@ -154,6 +152,8 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{commentCount}</span>
         </Grid>
+          <hr className={classes.visibleBreak} />
+        <Comments comments={comments} />
       </Grid>
     );
     return (
